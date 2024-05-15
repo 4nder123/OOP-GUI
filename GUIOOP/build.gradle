@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'schecher.failid.guioop'
-    mainClass = 'schecher.failid.guioop.HelloApplication'
+    mainModule = 'tripstrapstrull.failid.guioop'
+    mainClass = 'tripstrapstrull.failid.guioop.Peaklass'
 }
 
 javafx {
