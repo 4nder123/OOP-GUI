@@ -5,4 +5,10 @@ module schecher.failid.guioop {
 
     opens tripstrapstrull.failid.guioop to javafx.fxml;
     exports tripstrapstrull.failid.guioop;
+    exports;
+    opens to
+    exports;
+    opens to
+    exports;
+    opens to
 }
