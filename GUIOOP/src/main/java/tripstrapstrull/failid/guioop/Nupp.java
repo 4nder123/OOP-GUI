@@ -1,10 +1,10 @@
 package tripstrapstrull.failid.guioop;
+
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Collections;
 
@@ -54,7 +54,6 @@ public class Nupp implements EventHandler<MouseEvent> {
 
                 MangijaGUI.tulemus(stage, "Võitis " + MangijaGUI.md.get(0).toString());
             } else if (MangijaGUI.laud.onViik()) {
-                stage.close();
                 MangijaGUI.tulemus(stage, "Viik!");
 
             } else {

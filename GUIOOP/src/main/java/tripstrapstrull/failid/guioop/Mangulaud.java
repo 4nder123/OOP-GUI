@@ -1,7 +1,5 @@
 package tripstrapstrull.failid.guioop;
 
-import javafx.scene.Scene;
-
 public class Mangulaud {
     private Mangija[][] laud = new Mangija[3][3];
     private int k4ike = 9;

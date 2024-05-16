@@ -1,6 +1,5 @@
 package tripstrapstrull.failid.guioop;
 
-import javafx.beans.binding.MapBinding;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
