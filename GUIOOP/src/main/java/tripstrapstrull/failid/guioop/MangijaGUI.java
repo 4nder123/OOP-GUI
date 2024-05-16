@@ -56,6 +56,7 @@ public class MangijaGUI {
         }
         Scene scne1 = new Scene(mangulaud, 350, 350);
         stage.setTitle("TripsTrapsTrull");
+        stage.setResizable(false);
         stage.setScene(scne1);
         stage.show();
     }
@@ -95,7 +96,8 @@ public class MangijaGUI {
         gridPane.add(submitButton, 1, 2);
 
         Scene scene = new Scene(gridPane, 250, 100);
-        stage.setTitle("Trips-Traps-Trull");
+        stage.setTitle("TripsTrapsTrull");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
