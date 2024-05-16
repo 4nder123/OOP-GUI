@@ -49,16 +49,15 @@ public class Mangulaud {
         if (kontroll(xy[0], xy[1], 1, -1, mangur) + kontroll(xy[0], xy[1], -1, 1, mangur) >= v6iduksVajalik) return true;
         return false;
     }
-    public boolean lisaNupp(int kaik, Mangija mangur){
+    public boolean lisaNupp(int x, int y, Mangija mangur){
         /*
          * Lisab v6imalusekorral antud mängija nuppu positsioonile. 
          * @param kaik, 1-9 number kuhu soovitakse nupp panna
          * @param mangur, mänguri objekt, ehk nupp mida lisada mängulauale.
          * @return t6ene, kui 6nnestus, vastasel juhul väär. 
          */
-        int[] xy = getXY(kaik);
-        if (!onPosLaual(xy[1], xy[0]) || this.laud[xy[0]][xy[1]] != null) return false;
-        this.laud[xy[0]][xy[1]] = mangur;
+        if (!onPosLaual(y, x) || this.laud[x][y] != null) return false;
+        this.laud[x][y] = mangur;
         return true;
     }
     public String[][] getNuppudeMasiiv(){

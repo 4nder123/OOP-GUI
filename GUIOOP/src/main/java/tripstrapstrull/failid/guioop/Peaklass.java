@@ -3,80 +3,65 @@ package tripstrapstrull.failid.guioop;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Peaklass extends Application {
-
-    private int mi = 0;
-
-    private void flipMi(){
-        System.out.println(mi);
-        if (mi < 1){
-            mi = 1;
-            return;
-        }
-        mi = 0;
-    }
-
-
+    public static Mangulaud laud = new Mangulaud();
+    public static List<Mangija> md;
     @Override
     public void start(Stage stage) throws IOException {
 
-
-        Mangulaud laud = new Mangulaud();
         Mangija m1 = new Mangija("m1");
         Mangija m2 = new Mangija("m2");
-        Mangija[] md = {m1, m2};
-        int mi = 0;
+        md = Arrays.asList(m1,m2);
 
-        Button[] nupud = {
-                new Button(),
-                new Button(),
-                new Button(),
+        Label m1label = new Label(m1.toString());
+        Label m2label = new Label(m2.toString());
 
-                new Button(),
-                new Button(),
-                new Button(),
+        Nupp[] nupud = {
+                new Nupp(0,0),
+                new Nupp(1,0),
+                new Nupp(2,0),
 
-                new Button(),
-                new Button(),
-                new Button()
+                new Nupp(0,1),
+                new Nupp(1,1),
+                new Nupp(2,1),
+
+                new Nupp(0,2),
+                new Nupp(1,2),
+                new Nupp(2,2),
         };
 
-        GridPane grid = new GridPane(3, 3);
-        int x = 0;
-        int y = 0;
-        for (int i = 0; i < 9; i++) {// Lisame nupud ja anname neile m6tte!
-            Button b = nupud[i];
-            grid.add(nupud[i], x, y);
-            x++;
-            if (x >= 3){
-                x = 0;
-                y++;
-            }
-            int xCpy = x;
-            int yCpy = y;
+        GridPane mang = new GridPane(3,3);
+        GridPane nimed = new GridPane(2,1);
+        BorderPane mangulaud = new BorderPane();
+        mang.setAlignment(Pos.CENTER);
+        nimed.setAlignment(Pos.CENTER);
+        nimed.setHgap(100);
 
-            nupud[i].setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    if (laud.lisaNupp((xCpy+1)*(yCpy+1), md[mi])){
-                        b.setText(md[mi].toString());
-                        flipMi();
-                    }
-                }
-            });
+        nimed.add(m1label,0,0);
+        nimed.add(m2label,1,0);
+        mangulaud.setTop(nimed);
+        mangulaud.setCenter(mang);
+        for (Nupp nupp : nupud) {
+            mang.add(nupp.getBtn(), nupp.getxPos(), nupp.getyPos());
         }
-
-
-        Scene scne1 = new Scene(grid);
+        Scene scne1 = new Scene(mangulaud, 350, 350);
         stage.setTitle("TripsTrapsTrull");
         stage.setScene(scne1);
         stage.show();
