@@ -31,12 +31,18 @@ public class Nupp implements EventHandler<MouseEvent> {
         return yPos;
     }
 
+    public void reset() {
+        btn.setText("");
+    }
+
     @Override
     public void handle(MouseEvent mouseEvent) {
         System.out.println(xPos +" "+ yPos);
         if (MangijaGUI.laud.lisaNupp(xPos,yPos, MangijaGUI.md.get(0))){
             this.btn.setText(MangijaGUI.md.get(0).toString());
-            System.out.println(MangijaGUI.laud.kontrolli(xPos, yPos, MangijaGUI.md.get(0)));
+            if(MangijaGUI.laud.kontrolli(xPos, yPos, MangijaGUI.md.get(0))) {
+                System.out.println(MangijaGUI.md.get(0).toString() + "Võitis");
+            }
             Collections.rotate(MangijaGUI.md, 1);
         }
     }

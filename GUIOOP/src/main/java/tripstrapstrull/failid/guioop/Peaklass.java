@@ -6,7 +6,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -19,11 +21,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class Peaklass extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        MangijaGUI.kusimangijaid(stage);
+        MangijaGUI.alusta(stage);
     }
 
     public static void main(String[] args) {

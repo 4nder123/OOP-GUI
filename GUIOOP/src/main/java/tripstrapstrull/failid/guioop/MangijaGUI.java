@@ -2,9 +2,7 @@ package tripstrapstrull.failid.guioop;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -12,11 +10,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MangijaGUI {
     public static Mangulaud laud = new Mangulaud();
     public static List<Mangija> md = new ArrayList<>();
     public static FileManager skoorid = new FileManager("save.txt");
+    public static Nupp[] nupud;
     public static void naitaMangu(Stage stage){
         try {
             skoorid.loe();
@@ -26,18 +26,18 @@ public class MangijaGUI {
         Label m1label = new Label(md.get(0).toString()+":"+skoorid.getVoite(md.get(0).toString()));
         Label m2label = new Label(md.get(1).toString()+":"+skoorid.getVoite(md.get(1).toString()));
 
-        Nupp[] nupud = {
-                new Nupp(0,0),
-                new Nupp(1,0),
-                new Nupp(2,0),
+        nupud = new Nupp[]{
+                new Nupp(0, 0),
+                new Nupp(1, 0),
+                new Nupp(2, 0),
 
-                new Nupp(0,1),
-                new Nupp(1,1),
-                new Nupp(2,1),
+                new Nupp(0, 1),
+                new Nupp(1, 1),
+                new Nupp(2, 1),
 
-                new Nupp(0,2),
-                new Nupp(1,2),
-                new Nupp(2,2),
+                new Nupp(0, 2),
+                new Nupp(1, 2),
+                new Nupp(2, 2),
         };
 
         GridPane mang = new GridPane(3,3);
@@ -60,7 +60,33 @@ public class MangijaGUI {
         stage.setScene(scne1);
         stage.show();
     }
-    public static void kusimangijaid(Stage stage){
+
+    public static void tulemus(Stage stage, String tulemus){
+        ButtonType jahbtn = new ButtonType("Jah");
+        ButtonType eibtn = new ButtonType("Ei");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(null);
+        alert.setContentText(tulemus+"\nSoovite edasi mängida?");
+
+        alert.getButtonTypes().setAll(jahbtn, eibtn);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == jahbtn) {
+            laud.reset();
+            for (Nupp nupp : nupud) {
+                nupp.reset();
+            }
+        } else {
+            System.out.println("ei");
+        }
+
+        stage.close();
+    }
+
+    public static void alusta(Stage stage){
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
         gridPane.setHgap(10);
