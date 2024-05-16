@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 
 public class Mangulaud {
     private Mangija[][] laud = new Mangija[3][3];
+    private int k4ike = 9;
     
     private boolean onPosLaual(int posY, int posX){
         if (posY >= this.laud.length) return false;
@@ -46,6 +47,7 @@ public class Mangulaud {
          */
         if (!onPosLaual(y, x) || this.laud[x][y] != null) return false;
         this.laud[x][y] = mangur;
+        this.k4ike--;
         return true;
     }
     public String[][] getNuppudeMasiiv(){

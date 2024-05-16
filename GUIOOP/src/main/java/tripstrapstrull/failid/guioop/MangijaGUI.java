@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -60,6 +61,10 @@ public class MangijaGUI {
         stage.setScene(scne1);
         stage.show();
     }
+
+
+
+
     public static void kusimangijaid(Stage stage){
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
@@ -96,7 +101,7 @@ public class MangijaGUI {
         gridPane.add(submitButton, 1, 2);
 
         Scene scene = new Scene(gridPane, 250, 100);
-        stage.setTitle("TripsTrapsTrull");
+        stage.setTitle("Trips-Traps-Trull");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
