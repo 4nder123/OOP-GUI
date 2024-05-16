@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class MangijaGUI {
     public static Mangulaud laud = new Mangulaud();
@@ -24,21 +26,23 @@ public class MangijaGUI {
         } catch (IOException e) {
             System.out.println(e);
         }
-        Label m1label = new Label(md.get(0).toString()+":"+skoorid.getVoite(md.get(0).toString()));
-        Label m2label = new Label(md.get(1).toString()+":"+skoorid.getVoite(md.get(1).toString()));
+        md.get(0).setNupp("X");
+        md.get(1).setNupp("O");
+        Label m1label = new Label("X\n"+md.get(0).toString()+":"+skoorid.getVoite(md.get(0).toString()));
+        Label m2label = new Label("O\n"+md.get(1).toString()+":"+skoorid.getVoite(md.get(1).toString()));
 
         Nupp[] nupud = {
-                new Nupp(0,0),
-                new Nupp(1,0),
-                new Nupp(2,0),
+                new Nupp(0, 0, stage),
+                new Nupp(1, 0, stage),
+                new Nupp(2, 0, stage),
 
-                new Nupp(0,1),
-                new Nupp(1,1),
-                new Nupp(2,1),
+                new Nupp(0, 1, stage),
+                new Nupp(1, 1, stage),
+                new Nupp(2, 1, stage),
 
-                new Nupp(0,2),
-                new Nupp(1,2),
-                new Nupp(2,2),
+                new Nupp(0, 2, stage),
+                new Nupp(1, 2, stage),
+                new Nupp(2, 2, stage),
         };
 
         GridPane mang = new GridPane(3,3);
@@ -62,10 +66,29 @@ public class MangijaGUI {
         stage.show();
     }
 
+    public static void tulemus(Stage stage, String tulemus){
+        ButtonType jahbtn = new ButtonType("Jah");
+        ButtonType eibtn = new ButtonType("Ei");
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle(null);
+        alert.setContentText(tulemus+"\nSoovite edasi mängida?");
 
+        alert.getButtonTypes().setAll(jahbtn, eibtn);
 
-    public static void kusimangijaid(Stage stage){
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == jahbtn) {
+            laud.reset();
+            Collections.rotate(MangijaGUI.md, 1);
+            naitaMangu(stage);
+        } else {
+            stage.close();
+        }
+    }
+
+    public static void alusta(Stage stage){
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
         gridPane.setHgap(10);
