@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,28 +17,29 @@ public class MangijaGUI {
     public static Mangulaud laud = new Mangulaud();
     public static List<Mangija> md = new ArrayList<>();
     public static FileManager skoorid = new FileManager("save.txt");
-    public static Nupp[] nupud;
     public static void naitaMangu(Stage stage){
         try {
             skoorid.loe();
         } catch (IOException e) {
             System.out.println(e);
         }
-        Label m1label = new Label(md.get(0).toString()+":"+skoorid.getVoite(md.get(0).toString()));
-        Label m2label = new Label(md.get(1).toString()+":"+skoorid.getVoite(md.get(1).toString()));
+        md.get(0).setNupp("X");
+        md.get(1).setNupp("O");
+        Label m1label = new Label("X\n"+md.get(0).toString()+":"+skoorid.getVoite(md.get(0).toString()));
+        Label m2label = new Label("O\n"+md.get(1).toString()+":"+skoorid.getVoite(md.get(1).toString()));
 
-        nupud = new Nupp[]{
-                new Nupp(0, 0),
-                new Nupp(1, 0),
-                new Nupp(2, 0),
+        Nupp[] nupud = {
+                new Nupp(0, 0, stage),
+                new Nupp(1, 0, stage),
+                new Nupp(2, 0, stage),
 
-                new Nupp(0, 1),
-                new Nupp(1, 1),
-                new Nupp(2, 1),
+                new Nupp(0, 1, stage),
+                new Nupp(1, 1, stage),
+                new Nupp(2, 1, stage),
 
-                new Nupp(0, 2),
-                new Nupp(1, 2),
-                new Nupp(2, 2),
+                new Nupp(0, 2, stage),
+                new Nupp(1, 2, stage),
+                new Nupp(2, 2, stage),
         };
 
         GridPane mang = new GridPane(3,3);
@@ -76,14 +78,11 @@ public class MangijaGUI {
 
         if (result.isPresent() && result.get() == jahbtn) {
             laud.reset();
-            for (Nupp nupp : nupud) {
-                nupp.reset();
-            }
+            Collections.rotate(MangijaGUI.md, 1);
+            naitaMangu(stage);
         } else {
-            System.out.println("ei");
+            stage.close();
         }
-
-        stage.close();
     }
 
     public static void alusta(Stage stage){
