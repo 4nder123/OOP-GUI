@@ -1,5 +1,7 @@
 package tripstrapstrull.failid.guioop;
 
+import javafx.scene.Scene;
+
 public class Mangulaud {
     private Mangija[][] laud = new Mangija[3][3];
     
@@ -16,20 +18,7 @@ public class Mangulaud {
         if (this.laud[posY][posX] == mangur) return kontroll(posY+suundY, posX+suundX, suundY, suundX, mangur) + 1;
         return 0;
     }
-    private int[] getXY(int kaik){
-        int x = 0;
-        int y;
-        if(kaik <= 3){
-            x = 0;
-        } else if (kaik <= 6){
-            x = 1;
-        } else if (kaik <=9){
-            x = 2;
-        }
-        y = kaik - 1 - 3*x;
-        return new int[]{x,y};
-    }
-    public boolean kontrolli(int kaik, Mangija mangur){
+    public boolean kontrolli(int x, int y, Mangija mangur){
         /*
          *  Kontrollib kas mängija on saanud 3 (v6iduks vajalikud nupud ritta), teades kes ja kuhu viimati käis.
          *  @param kaik, 1-9 number kuhu viimati lisati nupp.
@@ -38,15 +27,14 @@ public class Mangulaud {
          */
 
         int v6iduksVajalik = 4; // palju on vaja ritta seada
-        int[] xy = getXY(kaik);
         //  Üles                                                Alla
-        if (kontroll(xy[0], xy[1], 1, 0, mangur) + kontroll(xy[0], xy[1], -1, 0, mangur) >= v6iduksVajalik) return true;
+        if (kontroll(x, y, 1, 0, mangur) + kontroll(x, y, -1, 0, mangur) >= v6iduksVajalik) return true;
         //  Vasak                                               Parem
-        if (kontroll(xy[0], xy[1], 0, -1, mangur) + kontroll(xy[0], xy[1], 0, 1, mangur) >= v6iduksVajalik) return true;
+        if (kontroll(x, y, 0, -1, mangur) + kontroll(x, y, 0, 1, mangur) >= v6iduksVajalik) return true;
         //Diagonaal vasakule ülevale                ???              
-        if (kontroll(xy[0], xy[1], -1, -1, mangur) + kontroll(xy[0], xy[1], 1, 1, mangur) >= v6iduksVajalik) return true;
+        if (kontroll(x, y, -1, -1, mangur) + kontroll(x, y, 1, 1, mangur) >= v6iduksVajalik) return true;
         //Diag. paremale alla                           ???  
-        if (kontroll(xy[0], xy[1], 1, -1, mangur) + kontroll(xy[0], xy[1], -1, 1, mangur) >= v6iduksVajalik) return true;
+        if (kontroll(x, y, 1, -1, mangur) + kontroll(x, y, -1, 1, mangur) >= v6iduksVajalik) return true;
         return false;
     }
     public boolean lisaNupp(int x, int y, Mangija mangur){
@@ -72,15 +60,6 @@ public class Mangulaud {
             }
         }
         return nuppud;
-    }
-    public void print_mangulaud() {
-        String[][] nuppud = getNuppudeMasiiv();
-        System.out.println();
-        System.out.println(" " + nuppud[0][0] + " │ " + nuppud[0][1] + " │ " + nuppud[0][2]);
-        System.out.println("───│───│───");
-        System.out.println(" " + nuppud[1][0] + " │ " + nuppud[1][1]+" │ " + nuppud[1][2]);
-        System.out.println("───│───│───");
-        System.out.println(" " + nuppud[2][0] + " │ " + nuppud[2][1] + " │ " + nuppud[2][2]);
     }
 
     public void reset(){

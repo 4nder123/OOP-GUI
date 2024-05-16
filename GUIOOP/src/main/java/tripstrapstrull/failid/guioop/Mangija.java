@@ -4,7 +4,8 @@ public class Mangija {
     private String nimi;
     private String nupp;
 
-    public Mangija(String nimi) {
+    public Mangija(String nimi) throws VäljadErind {
+        if(nimi.isEmpty()) throw new VäljadErind("Täida kõik lüngad!");
         this.nimi = nimi;
     }
 

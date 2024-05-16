@@ -26,6 +26,8 @@ public class FileManager {
                 this.mangijad.put(andmed[0], Integer.parseInt(andmed[1]));
                 rida = br.readLine();
             }
+        } catch (FileNotFoundException e) {
+            kirjuta();
         }
     }
     public int getVoite(String nimi){

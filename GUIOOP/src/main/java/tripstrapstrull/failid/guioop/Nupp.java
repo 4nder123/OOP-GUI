@@ -34,9 +34,10 @@ public class Nupp implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         System.out.println(xPos +" "+ yPos);
-        if (Peaklass.laud.lisaNupp(xPos,yPos, Peaklass.md.get(0))){
-            this.btn.setText(Peaklass.md.get(0).toString());
-            Collections.rotate(Peaklass.md, 1);
+        if (MangijaGUI.laud.lisaNupp(xPos,yPos, MangijaGUI.md.get(0))){
+            this.btn.setText(MangijaGUI.md.get(0).toString());
+            System.out.println(MangijaGUI.laud.kontrolli(xPos, yPos, MangijaGUI.md.get(0)));
+            Collections.rotate(MangijaGUI.md, 1);
         }
     }
 }
