@@ -38,6 +38,11 @@ public class Mangulaud {
         if (kontroll(x, y, 1, -1, mangur) + kontroll(x, y, -1, 1, mangur) >= v6iduksVajalik) return true;
         return false;
     }
+
+    public boolean onViik(){
+        return k4ike <= 0;
+    }
+
     public boolean lisaNupp(int x, int y, Mangija mangur){
         /*
          * Lisab v6imalusekorral antud mängija nuppu positsioonile. 
@@ -65,6 +70,8 @@ public class Mangulaud {
     }
 
     public void reset(){
+
         this.laud = new Mangija[3][3];
+        this.k4ike = 9;
     }
 }
