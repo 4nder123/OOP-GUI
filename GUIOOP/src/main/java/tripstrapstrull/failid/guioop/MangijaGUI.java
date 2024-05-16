@@ -44,6 +44,7 @@ public class MangijaGUI {
                 new Nupp(2, 2, stage),
         };
 
+
         GridPane mang = new GridPane(3,3);
         GridPane nimed = new GridPane(2,1);
         BorderPane mangulaud = new BorderPane();
@@ -55,11 +56,11 @@ public class MangijaGUI {
         nimed.add(m2label,1,0);
         mangulaud.setTop(nimed);
         mangulaud.setCenter(mang);
-        for (Nupp nupp : nupud) {
+        for (Nupp nupp : nupud) { // lisame nupud mängulauale
             mang.add(nupp.getBtn(), nupp.getxPos(), nupp.getyPos());
         }
         Scene scne1 = new Scene(mangulaud, 350, 350);
-        stage.setTitle("TripsTrapsTrull");
+        stage.setTitle("Trips-traps-trull");
         stage.setResizable(false);
         stage.setScene(scne1);
         stage.show();

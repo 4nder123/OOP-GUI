@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 public class Nupp implements EventHandler<MouseEvent> {
-
+    //Nupp on ühe ruudu representatsioon.
     private Button btn;
     private int xPos;
     private int yPos;
@@ -35,16 +35,15 @@ public class Nupp implements EventHandler<MouseEvent> {
         return yPos;
     }
 
-    public void reset() {
-        btn.setText("");
-    }
+
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        System.out.println(xPos +" "+ yPos);
-        if (MangijaGUI.laud.lisaNupp(xPos,yPos, MangijaGUI.md.get(0))){
+
+        //System.out.println(xPos +" "+ yPos);
+        if (MangijaGUI.laud.lisaNupp(xPos,yPos, MangijaGUI.md.get(0))){//Proovime nuppu lisada, kui ei saa tagastatakse false
             this.btn.setText(MangijaGUI.md.get(0).getNupp());
-            if(MangijaGUI.laud.kontrolli(xPos, yPos, MangijaGUI.md.get(0))) {
+            if(MangijaGUI.laud.kontrolli(xPos, yPos, MangijaGUI.md.get(0))) {//Kontollime kas keegi on voitnud!
                 MangijaGUI.skoorid.lisaVoit(MangijaGUI.md.get(0).toString());
                 try {
                     MangijaGUI.skoorid.kirjuta();
@@ -53,10 +52,10 @@ public class Nupp implements EventHandler<MouseEvent> {
                 }
 
                 MangijaGUI.tulemus(stage, "Võitis " + MangijaGUI.md.get(0).toString());
-            } else if (MangijaGUI.laud.onViik()) {
+            } else if (MangijaGUI.laud.onViik()) {// kontrollime viigiseisundit
                 MangijaGUI.tulemus(stage, "Viik!");
 
-            } else {
+            } else {//laseme teisel mängijal mängida
                 Collections.rotate(MangijaGUI.md, 1);
             }
         }
