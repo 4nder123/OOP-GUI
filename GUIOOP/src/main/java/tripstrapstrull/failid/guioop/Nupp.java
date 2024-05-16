@@ -51,8 +51,12 @@ public class Nupp implements EventHandler<MouseEvent> {
                 } catch (IOException e) {
                     System.out.println(e);
                 }
-                stage.close();
+
                 MangijaGUI.tulemus(stage, "Võitis " + MangijaGUI.md.get(0).toString());
+            } else if (MangijaGUI.laud.onViik()) {
+                stage.close();
+                MangijaGUI.tulemus(stage, "Viik!");
+
             } else {
                 Collections.rotate(MangijaGUI.md, 1);
             }
